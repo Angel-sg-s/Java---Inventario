@@ -110,10 +110,10 @@ public class Funciones {
             String code = sc.nextLine();
 
             productos.stream().filter(producto -> code.equals(producto.getCodigo())).reduce((first, second) -> second).ifPresentOrElse(producto -> {
-                System.out.println("+-----------+-------------+------------+--------------+--------+");
-                System.out.println("|   Fecha   | Transacción |   Código   |   Producto   |  Saldo |");
-                System.out.println("+-----------+-------------+------------+--------------+--------+");
-                System.out.printf("| %-10s | %-10s | %-10s | %-12s | %-5s |\n", producto.getFecha(), producto.getTransaccion(), producto.getCodigo(), producto.getProducto(), producto.getSaldo());
+                System.out.println("+------------+-------------+------------+--------------+--------+");
+                System.out.println("|   Fecha    | Transacción |   Código   |   Producto   |  Saldo |");
+                System.out.println("+------------+-------------+------------+--------------+--------+");
+                System.out.printf("| %-10s | %-11s | %-10s | %-12s | %6s |\n", producto.getFecha(), producto.getTransaccion(), producto.getCodigo(), producto.getProducto(), producto.getSaldo());
             }, () -> System.out.println("No se encontró el producto"));
 
 
@@ -123,6 +123,7 @@ public class Funciones {
 
 
     }
+
     public void Retiro(File archivo, Scanner sc) {
         try (FileInputStream fis = new FileInputStream(archivo);
              Workbook workbook = new XSSFWorkbook(fis)) {
@@ -160,7 +161,7 @@ public class Funciones {
             }
                 int cantidadRetiro;
             System.out.println(productoEncontrado);
-int size = 0;
+            int size = 0;
             if (productoEncontrado.size()>0) {
                 // Si el producto existe, verificar el saldo
                 size = productoEncontrado.size();
@@ -208,11 +209,11 @@ int size = 0;
 
     public void Reporte(File archivo) {
         List<Producto> productos = Poiji.fromExcel(archivo, Producto.class);
-        System.out.println("+-----------+-------------+------------+--------------+----------+-------+");
-        System.out.println("|   Fecha   | Transacción |   Código   |   Producto   | Cantidad | Saldo |");
-        System.out.println("+-----------+-------------+------------+--------------+----------+-------+");
+        System.out.println("+------------+-------------+------------+--------------+----------+-------+");
+        System.out.println("|   Fecha    | Transacción |   Código   |   Producto   | Cantidad | Saldo |");
+        System.out.println("+------------+-------------+------------+--------------+----------+-------+");
         productos.forEach(producto -> {
-            System.out.printf("| %-9s | %-11s | %-10s | %-12s | %-10s | %-5s |\n", producto.getFecha(), producto.getTransaccion(), producto.getCodigo(), producto.getProducto(), producto.getCantidad(), producto.getSaldo());
+            System.out.printf("| %-9s | %-11s | %-10s | %-12s | %8s | %5s |\n", producto.getFecha(), producto.getTransaccion(), producto.getCodigo(), producto.getProducto(), producto.getCantidad(), producto.getSaldo());
         });
     }
 

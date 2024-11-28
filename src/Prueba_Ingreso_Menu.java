@@ -39,7 +39,7 @@ public class Prueba_Ingreso_Menu {
             // Retardo de 1000 milisegundos (1 segundos)
             Thread.sleep(1000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         for (int i = 0; i < 50; i++) {
             System.out.println();
@@ -57,8 +57,14 @@ public class Prueba_Ingreso_Menu {
             System.out.println("║ 2. Salir del Sistema                 ║");
             System.out.println("╚══════════════════════════════════════╝");
             System.out.print("Selecciona una opción: ");
-            int opcion = scanner.nextInt();
-            scanner.nextLine(); // Clear buffer
+            int opcion = 0;
+            try {
+                opcion = scanner.nextInt();
+                scanner.nextLine(); // Clear buffer
+            }catch (Exception e){
+                scanner.nextLine(); // Limpia el buffer en caso de error
+            }
+
 
             if (opcion == 1) {
                 Usuario usuarioAutenticado = autenticar();
