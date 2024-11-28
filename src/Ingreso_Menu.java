@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -18,7 +17,7 @@ class Usuario {
     }
 }
 
-public class Prueba_Ingreso_Menu {
+public class Ingreso_Menu {
     private static Map<String, Usuario> usuarios = new HashMap<>();
     public static final Scanner scanner = new Scanner(System.in);
 
@@ -152,6 +151,7 @@ public class Prueba_Ingreso_Menu {
                     System.out.println("El archivo inventario.xlsx no existe.");
                     return;
                 }
+
 
                 switch (opcion) {
                     case 1:
